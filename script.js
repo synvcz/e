@@ -2,7 +2,7 @@
 //     return new Promise(resolve => setTimeout(resolve, ms));
 //   }
   
-//   var str = 'voidreapxr';
+//   var str = 'synvcz';
 //   document.title = '';
 //   async function typewriteTitle() {
 //     for (let i = 0; i < str.length; i++) {
@@ -17,7 +17,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   
-  var str = 'voidreapxr';
+  var str = 'synvcz';
   document.title = ''; // Ensure the title is cleared initially
   
   // Store the original title
