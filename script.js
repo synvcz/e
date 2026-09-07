@@ -52,15 +52,21 @@ const audio = document.getElementById('myAudio');
 const volumeSlider = document.getElementById('volume-slider');
 const speakerIcon = document.getElementById('speaker-icon');
 
-audio.volume = volumeSlider.value;
+let previousVolume = 1;
 
-let previousVolume = audio.volume;
+// Initial volume
+audio.volume = 1;
+volumeSlider.value = 1;
 
+
+// Slider
 volumeSlider.addEventListener('input', function () {
-    audio.volume = this.value;
+    const volume = parseFloat(this.value);
 
-    if (audio.volume > 0) {
-        previousVolume = audio.volume;
+    audio.volume = volume;
+
+    if (volume > 0) {
+        previousVolume = volume;
         audio.muted = false;
 
         speakerIcon.classList.remove('fa-volume-mute');
@@ -73,23 +79,40 @@ volumeSlider.addEventListener('input', function () {
     }
 });
 
+
+// Speaker button
 speakerIcon.addEventListener('click', function () {
-    if (!audio.muted && audio.volume > 0) {
-        // Save current volume before muting
+
+    // If currently audible → mute
+    if (audio.volume > 0 && !audio.muted) {
+
+        // Remember the volume
         previousVolume = audio.volume;
 
+        // Set volume to 0
         audio.volume = 0;
         volumeSlider.value = 0;
+
+        // Mute
         audio.muted = true;
 
+        // Change icon
         speakerIcon.classList.remove('fa-volume-up');
         speakerIcon.classList.add('fa-volume-mute');
-    } else {
+
+    } 
+    
+    // If muted → restore
+    else {
+
         // Restore previous volume
         audio.volume = previousVolume;
         volumeSlider.value = previousVolume;
+
+        // Unmute
         audio.muted = false;
 
+        // Change icon
         speakerIcon.classList.remove('fa-volume-mute');
         speakerIcon.classList.add('fa-volume-up');
     }
