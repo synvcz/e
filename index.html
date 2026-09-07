@@ -53,48 +53,28 @@
         Your browser does not support the audio element.
     </audio>
 
-    <script>
-       // Wait for user interaction to unmute and play the audio
-document.body.addEventListener('click', function () {
-  var overlay = document.getElementById('overlay');
-  var audio = document.getElementById('myAudio');
-  var audioControl = document.querySelector('.audio-control');
+<script>
+    // Only the overlay reacts to the initial click
+    document.getElementById('overlay').addEventListener('click', function () {
+        const overlay = this;
+        const audio = document.getElementById('myAudio');
+        const audioControl = document.querySelector('.audio-control');
 
-  // Fade out the overlay
-  overlay.style.opacity = '0';
+        // Fade out overlay
+        overlay.style.opacity = '0';
 
-  // After fade-out, hide the overlay and show the volume control
-  setTimeout(function () {
-    overlay.style.display = 'none';
-    audioControl.style.opacity = '1'; // Show volume slider after overlay disappears
-  }, 1000); // 1 second for the fade-out transition
+        // Hide overlay and show audio controls
+        setTimeout(function () {
+            overlay.style.display = 'none';
+            audioControl.style.opacity = '1';
+        }, 1000);
 
-  // Start playing the audio (unmute and autoplay)
-  audio.play();
-  audio.muted = false;
-});
+        // Start audio
+        audio.muted = false;
+        audio.play();
+    });
+</script>
 
-// Adjust audio volume based on slider value
-document.getElementById('volume-slider').addEventListener('input', function () {
-  var audio = document.getElementById('myAudio');
-  var speakerIcon = document.getElementById('speaker-icon');
-  
-  // Update volume based on slider
-  audio.volume = this.value;
-
-  // If the slider value is 0, mute the audio and change to muted icon
-  if (this.value == 0) {
-    audio.muted = true;
-    speakerIcon.classList.remove('fa-volume-up');
-    speakerIcon.classList.add('fa-volume-mute');
-  } else {
-    audio.muted = false;
-    speakerIcon.classList.remove('fa-volume-mute');
-    speakerIcon.classList.add('fa-volume-up');
-  }
-});
-
-    </script>
-        <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
