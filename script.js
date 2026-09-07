@@ -71,21 +71,20 @@ volumeSlider.addEventListener('input', function () {
     }
 });
 
-// Function to toggle mute and change the icon
-function toggleMute() {
-    const audio = document.getElementById('myAudio');
-    const speakerIcon = document.getElementById('speaker-icon');
+const audio = document.getElementById("myAudio");
+const speakerIcon = document.getElementById("speaker-icon");
 
+speakerIcon.addEventListener("click", () => {
     audio.muted = !audio.muted;
 
     if (audio.muted) {
-        speakerIcon.classList.remove('fa-volume-up');
-        speakerIcon.classList.add('fa-volume-mute');
+        speakerIcon.classList.remove("fa-volume-up");
+        speakerIcon.classList.add("fa-volume-mute");
     } else {
-        speakerIcon.classList.remove('fa-volume-mute');
-        speakerIcon.classList.add('fa-volume-up');
+        speakerIcon.classList.remove("fa-volume-mute");
+        speakerIcon.classList.add("fa-volume-up");
     }
-}
+});
 
 
 
