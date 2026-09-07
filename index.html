@@ -43,12 +43,9 @@
 
     <!-- Audio control in top left corner -->
     <div class="audio-control">
-        <!-- Speaker icon, will toggle between normal and muted -->
-        <i class="fa fa-volume-up" id="speaker-icon" onclick="toggleMute()"></i>
-        
-        <!-- Volume slider -->
-        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
-    </div>
+    <i class="fa fa-volume-up" id="speaker-icon"></i>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+</div>
 
     <!-- Audio element -->
     <audio id="myAudio" loop muted>
