@@ -73,16 +73,17 @@ volumeSlider.addEventListener('input', function () {
 
 // Function to toggle mute and change the icon
 function toggleMute() {
+    const audio = document.getElementById('myAudio');
+    const speakerIcon = document.getElementById('speaker-icon');
+
+    audio.muted = !audio.muted;
+
     if (audio.muted) {
-        // Unmute audio and show normal speaker icon
-        audio.muted = false;
-        speakerIcon.classList.remove('fa-volume-mute');
-        speakerIcon.classList.add('fa-volume-up');
-    } else {
-        // Mute audio and show muted speaker icon
-        audio.muted = true;
         speakerIcon.classList.remove('fa-volume-up');
         speakerIcon.classList.add('fa-volume-mute');
+    } else {
+        speakerIcon.classList.remove('fa-volume-mute');
+        speakerIcon.classList.add('fa-volume-up');
     }
 }
 
