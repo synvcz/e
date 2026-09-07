@@ -97,22 +97,6 @@ document.getElementById('volume-slider').addEventListener('input', function () {
   }
 });
 
-// Toggle mute on click of the speaker icon
-function toggleMute() {
-  var audio = document.getElementById('myAudio');
-  var speakerIcon = document.getElementById('speaker-icon');
-
-  if (audio.muted) {
-    audio.muted = false;
-    speakerIcon.classList.remove('fa-volume-mute');
-    speakerIcon.classList.add('fa-volume-up');
-  } else {
-    audio.muted = true;
-    speakerIcon.classList.remove('fa-volume-up');
-    speakerIcon.classList.add('fa-volume-mute');
-  }
-}
-
     </script>
 </body>
 </html>
