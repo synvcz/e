@@ -1,284 +1,242 @@
 @import url('font.css');
 
-body {margin: 0;}
+/* =========================
+   GLOBAL
+   ========================= */
 
-
-*{
-  cursor: url(/assets/cursor/b1e95809-91e2-47f3-b6bf-c5c2687977f5.cur) 16 16, auto !important;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-        /* Apply the blur effect to the container, not the video itself */
-        .video-container {
-          position: relative;
-          overflow: hidden;
-      }
-  
-      .video-container video {
-          filter: blur(4px); /* Apply the blur to the video */
-          -webkit-filter: blur(4px); /* For Safari */
-          width: 105%;
-          height: 105.50%;
-          object-fit: cover; /* Ensures the video fills the container */
-          outline: none; /* Remove outline from the video */
-          border: none; /* Remove any borders */
-          margin-right: -15px;
-          margin-bottom: -15px;
-      }
+* {
+    cursor: url(/assets/cursor/b1e95809-91e2-47f3-b6bf-c5c2687977f5.cur) 16 16, auto !important;
+}
 
 
-      /* #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-        font-family: 'Rubik', sans-serif; 
-        z-index: 1000;
-        opacity: 1; 
-        transition: opacity 1s ease;
-    } */
+/* =========================
+   VIDEO BACKGROUND
+   ========================= */
 
-    /* Hidden audio element */
-    audio {
-        display: none;
-    }
+.lmao {
+    width: 100%;
+    height: 100%;
+}
 
-/* Ensure the video container is correctly positioned */
 .video-container {
-  position: relative; /* Needed to position the text on top of the video */
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 #myVideo {
-  width: 105%;
-  height: 105%;
-  object-fit: cover;
-  position: absolute;
-  top: -5px;
-  left: -5px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
 
+    object-fit: cover;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+
+    outline: none;
+    border: none;
 }
 
-/* Container for text over the video */
+
+/* =========================
+   PROFILE TEXT
+   ========================= */
+
 .video-text {
-  position: absolute;
-  top: 45%; /* Position the entire text block higher */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2; /* Ensure it's above the video */
-  color: white;
-  font-family: 'Rubik', sans-serif;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+    color: white;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
 }
 
-/* Larger size for the main text */
 .main-text {
-  font-size: 2rem; /* Increase size of main text */
-  /* font-weight: bold; */
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
-  margin: 0; /* Ensure no unwanted margins */
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
 }
 
-/* Smaller size for the subtext */
 .sub-text {
-  font-size: 1.5rem; /* Smaller font size */
-  margin-top: 10px; /* Space below the main text */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
-  font-weight: normal;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Style for the social icons container */
+
+/* =========================
+   SOCIAL ICONS
+   ========================= */
+
 .social-icons {
-  margin-top: 20px; /* Space above the icons */
-  display: flex;
-  justify-content: center; /* Center the icons horizontally */
-  align-items: center; /* Vertically align the icons in the middle */
-  gap: 13px; /* Space between the icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 13px;
+    margin-top: 20px;
 }
 
-/* Style for each icon */
 .social-icons a {
-  color: white; /* Icon color */
-  font-size: 2rem; /* Icon size */
-  transition: transform 0.2s, color 0.2s; /* Smooth hover effect */
-  text-decoration: none; /* Remove underline on links */
+    display: flex;
+    align-items: center;
+
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
 
-/* Hover effect for icons */
 .social-icons a:hover {
-  transform: scale(1.2); /* Slightly enlarge on hover */
+    transform: scale(1.2);
+    opacity: 0.85;
 }
 
-/* Style for the SVG within the social-icons container */
-.social-icons a svg.roblox-icon {
-  width: 2rem; /* Match the font-size of Font Awesome icons */
-  height: 2rem; /* Ensure consistent scaling with other icons */
-  transition: transform 0.2s, fill 0.2s; /* Add smooth hover effect */
-  fill: white; /* Match the color of the Font Awesome icons */
-  display: block; /* Makes sure the SVG behaves like a block element */
-  margin-top: 2px; /* Fine-tune the vertical position (small positive margin to nudge it up) */
+.social-icons a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
 }
 
-/* Hover effect for the SVG */
-.social-icons a svg.roblox-icon:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  fill: #ffffff; /* Change color on hover to match other icons */
+.roblox-icon {
+    display: block;
+
+    width: 2rem;
+    height: 2rem;
+
+    fill: currentColor;
 }
 
-/* Initially hide the volume control */
+
+/* =========================
+   AUDIO
+   ========================= */
+
+audio {
+    display: none;
+}
+
 .audio-control {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001; /* Ensure it's above the overlay */
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between icon and slider */
-  opacity: 0; /* Hidden initially */
-  transition: opacity 1s ease; /* Fade-in effect */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    z-index: 10001;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
-
-
-/* Black background for audio restriction */
-.audio-control-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;  /* Background color for the restriction */
-  z-index: 999;  /* Make sure this is below the audio control */
-}
-
-/* Speaker icon */
 .audio-control i {
-  font-size: 20px;
-  color: #fff;
-  cursor: pointer;
-  pointer-events: none;  /* Disable interaction (click) with the icon */
+    color: white;
+    font-size: 20px;
+    cursor: pointer !important;
 }
 
-/* Volume Slider */
+
+/* =========================
+   VOLUME SLIDER
+   ========================= */
+
 #volume-slider {
-  -webkit-appearance: none;  /* Remove default styling */
-  appearance: none;
-  width: 80px;               /* Compact width */
-  height: 5px;               /* Thin track */
-  background: #ffffff;       /* White background for the track */
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  z-index: 1001;  /* Ensure slider stays above the black background */
+    width: 80px;
+    height: 5px;
+
+    padding: 0;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: white;
+    border-radius: 5px;
+    outline: none;
+
+    cursor: pointer !important;
 }
 
-/* Style for the thumb of the slider */
-#volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;               /* Smaller thumb */
-  height: 10px;
-  background: #ffffff;
-  border-radius: 50%;        /* Circular thumb */
-  cursor: pointer;
-}
-
-/* For Firefox */
-#volume-slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Hover effect when hovering over the slider */
 #volume-slider:hover {
-  background: #e0e0e0;  /* Slightly darker background on hover */
+    background: #e0e0e0;
 }
 
 
-/* #overlay (the black background) */
+/* Chrome / Edge / Safari */
+
+#volume-slider::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: white;
+    border-radius: 50%;
+
+    cursor: pointer !important;
+}
+
+
+/* Firefox */
+
+#volume-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+
+    background: white;
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer !important;
+}
+
+
+/* =========================
+   CLICK-TO-ENTER OVERLAY
+   ========================= */
+
 #overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  font-family: 'Rubik', sans-serif; 
-  z-index: 10000; /* High z-index to ensure it stays above everything else */
-  opacity: 1; /* Initially fully visible */
-  transition: opacity 1s ease; /* Smooth fade-out transition */
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10000;
+
+    background-color: black;
+    color: white;
+
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+
+    opacity: 1;
+    transition: opacity 1s ease;
 }
-
-/* Initially hide the audio control */
-.audio-control {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 10001; /* Ensure this is above the overlay (#overlay) */
-  display: none; /* Initially hidden */
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between the icon and the slider */
-}
-
-/* Speaker icon */
-.audio-control i {
-  font-size: 20px;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Volume Slider */
-#volume-slider {
-  -webkit-appearance: none;  /* Remove default styling */
-  appearance: none;
-  width: 80px;               /* Compact width */
-  height: 5px;               /* Thin track */
-  background: #ffffff;       /* White background for the track */
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-}
-
-/* Style for the thumb of the slider */
-#volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;               /* Smaller thumb */
-  height: 10px;
-  background: #ffffff;
-  border-radius: 50%;        /* Circular thumb */
-  cursor: pointer;
-}
-
-/* For Firefox */
-#volume-slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Hover effect when hovering over the slider */
-#volume-slider:hover {
-  background: #e0e0e0;  /* Slightly darker background on hover */
-}
-
-
