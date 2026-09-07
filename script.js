@@ -48,46 +48,38 @@ function sleep(ms) {
   typewriteTitle(); // Start the function   
 
 
-// Get the audio element, volume slider, and speaker icon
+// Get audio elements
 const audio = document.getElementById('myAudio');
 const volumeSlider = document.getElementById('volume-slider');
 const speakerIcon = document.getElementById('speaker-icon');
 
-// Set initial volume (optional)
+// Initial volume
 audio.volume = volumeSlider.value;
 
-// Add event listener to the volume slider
+// Volume slider
 volumeSlider.addEventListener('input', function () {
-    audio.volume = volumeSlider.value; // Update audio volume based on slider value
+    audio.volume = this.value;
 
-    // If the volume is very low, switch to muted speaker icon
     if (audio.volume <= 0.05) {
+        audio.muted = true;
         speakerIcon.classList.remove('fa-volume-up');
         speakerIcon.classList.add('fa-volume-mute');
     } else {
-        // If the volume is above 0.05, show the normal speaker icon
+        audio.muted = false;
         speakerIcon.classList.remove('fa-volume-mute');
         speakerIcon.classList.add('fa-volume-up');
     }
 });
 
-const audio = document.getElementById("myAudio");
-const speakerIcon = document.getElementById("speaker-icon");
-
-speakerIcon.addEventListener("click", () => {
+// Speaker button
+speakerIcon.addEventListener('click', function () {
     audio.muted = !audio.muted;
 
     if (audio.muted) {
-        speakerIcon.classList.remove("fa-volume-up");
-        speakerIcon.classList.add("fa-volume-mute");
+        speakerIcon.classList.remove('fa-volume-up');
+        speakerIcon.classList.add('fa-volume-mute');
     } else {
-        speakerIcon.classList.remove("fa-volume-mute");
-        speakerIcon.classList.add("fa-volume-up");
+        speakerIcon.classList.remove('fa-volume-mute');
+        speakerIcon.classList.add('fa-volume-up');
     }
 });
-
-
-
-
-
-
