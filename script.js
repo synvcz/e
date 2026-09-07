@@ -48,37 +48,48 @@ function sleep(ms) {
   typewriteTitle(); // Start the function   
 
 
-// Get audio elements
 const audio = document.getElementById('myAudio');
 const volumeSlider = document.getElementById('volume-slider');
 const speakerIcon = document.getElementById('speaker-icon');
 
-// Initial volume
 audio.volume = volumeSlider.value;
 
-// Volume slider
+let previousVolume = audio.volume;
+
 volumeSlider.addEventListener('input', function () {
     audio.volume = this.value;
 
-    if (audio.volume <= 0.05) {
-        audio.muted = true;
-        speakerIcon.classList.remove('fa-volume-up');
-        speakerIcon.classList.add('fa-volume-mute');
-    } else {
+    if (audio.volume > 0) {
+        previousVolume = audio.volume;
         audio.muted = false;
+
         speakerIcon.classList.remove('fa-volume-mute');
         speakerIcon.classList.add('fa-volume-up');
+    } else {
+        audio.muted = true;
+
+        speakerIcon.classList.remove('fa-volume-up');
+        speakerIcon.classList.add('fa-volume-mute');
     }
 });
 
-// Speaker button
 speakerIcon.addEventListener('click', function () {
-    audio.muted = !audio.muted;
+    if (!audio.muted && audio.volume > 0) {
+        // Save current volume before muting
+        previousVolume = audio.volume;
 
-    if (audio.muted) {
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        audio.muted = true;
+
         speakerIcon.classList.remove('fa-volume-up');
         speakerIcon.classList.add('fa-volume-mute');
     } else {
+        // Restore previous volume
+        audio.volume = previousVolume;
+        volumeSlider.value = previousVolume;
+        audio.muted = false;
+
         speakerIcon.classList.remove('fa-volume-mute');
         speakerIcon.classList.add('fa-volume-up');
     }
